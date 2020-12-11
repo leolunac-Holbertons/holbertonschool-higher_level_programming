@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 #include "lists.h"
@@ -12,8 +13,8 @@
 
 listint_t *insert_node(listint_t **head, int number)
 {
-	istint_t *n_node;
-	istint_t *tmp;
+	listint_t *n_node;
+	listint_t *tmp;
 
 	if (!head)
 		return (NULL);
