@@ -1,0 +1,63 @@
+The ``3-say_my_name`` module
+==========================
+
+Using ``say_my_name``
+---------------------
+
+This is an test file for printing a name
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+    >>> say_my_name("a", "b")
+    My name is a b
+
+    >>> say_my_name("a")
+    My name is a 
+
+    >>> say_my_name(0, "b")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name("a", 0)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name("", "b")
+    My name is  b
+
+    >>> say_my_name("a", "")
+    My name is a 
+
+    >>> say_my_name("a", None)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name() #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
+
+    >>> say_my_name("a", "b", "c") #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
+
+    >>> say_my_name("", "")
+    My name is  
+
+    >>> say_my_name("a", [0, 1])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name({}, "b")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name("a" + "b", "c" + "d")
+    My name is ab cd
