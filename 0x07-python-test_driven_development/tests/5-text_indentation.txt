@@ -1,0 +1,98 @@
+The ``5-text_indentation`` module
+==========================
+
+Using ``text_indentation``
+---------------------
+
+This is an test file for adding two integers
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+    >>> text_indentation("text")
+    text
+
+    >>> text_indentation("")
+    
+
+    >>> text_indentation(".")
+    .
+    <BLANKLINE>
+
+    >>> text_indentation(".?:")
+    .
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+
+    >>> text_indentation("hello.")
+    hello.
+    <BLANKLINE>
+
+    >>> text_indentation("hello   ") #doctest: +REPORT_NDIFF
+    hello
+
+    >>> text_indentation("   hello")
+    hello
+
+    >>> text_indentation("hello   .")
+    hello   .
+    <BLANKLINE>
+
+    >>> text_indentation("   hello?\t")
+    hello?
+    <BLANKLINE>
+
+    >>> text_indentation("   hello   :   ")
+    hello   :
+    <BLANKLINE>
+
+    >>> text_indentation("\thello: \t")
+    hello:
+    <BLANKLINE>
+
+    >>> text_indentation("hello   :")
+    hello   :
+    <BLANKLINE>
+
+    >>> text_indentation("   hello   :")
+    hello   :
+    <BLANKLINE>
+
+    >>> text_indentation("   hello   :")
+    hello   :
+    <BLANKLINE>
+
+    >>> text_indentation("   hel:  lo   :")
+    hel:
+    <BLANKLINE>
+    lo   :
+    <BLANKLINE>
+
+    >>> text_indentation(0)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(["hello"])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation() #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
+
+    >>> text_indentation("text", "text") #doctest: +ELLIPSIS
+    Traceback (most recent call last):
+    TypeError:...
+
+    >>> text_indentation(" hel " + " lo ") #doctest: +REPORT_NDIFF
+    hel  lo
+
+    >>> text_indentation("hel\n lo")
+    hel
+    lo
