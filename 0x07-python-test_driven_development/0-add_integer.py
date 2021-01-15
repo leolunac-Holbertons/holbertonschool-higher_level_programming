@@ -1,30 +1,18 @@
 #!/usr/bin/python3
 """
-This module provides an integer add function to be tested using
-docstring testing.
+This is the "0-add_integer" module.
+The 0-add_integer module supplies one function, add_integer(a, b).
 """
 
 
-def add_integer(a, b=98):
-    """
-    Function to add two integers, error if non integers or floats
-
-    Args:
-        a: first integer to add
-        b: second integer to add
-
-    Returns:
-        a + b (int): sum of a and b
-    """
-    if type(a) == float or type(a) == int:
+def add_integer(a, b):
+    """Return the addition of two numbers."""
+    if type(a) is not int and type(a) is not float:
+        raise TypeError("a must be an integer")
+    if type(b) is not int and type(b) is not float:
+        raise TypeError("b must be an integer")
+    if type(a) is float:
         a = int(a)
-    else:
-        raise TypeError('a must be an integer')
-
-    if type(b) == float or type(b) == int:
+    if type(b) is float:
         b = int(b)
-    else:
-        raise TypeError('b must be an integer')
-
     return a + b
-
