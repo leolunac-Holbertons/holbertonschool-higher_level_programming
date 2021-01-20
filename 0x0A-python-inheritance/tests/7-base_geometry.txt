@@ -1,0 +1,28 @@
+The ``base_geometry`` module
+======================
+
+Using ``integer_validator`` function
+-------------------------------
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+
+	>>> bg.integer_validator("my_int", 12)
+
+	>>> bg.integer_validator("my_int2", 31)
+
+	>>> bg.integer_validator("1", "e") #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	TypeError: 1 must be an integer
+
+	>>> bg.integer_validator("2", 1, 2) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	TypeError:...
+
+	>>> bg.integer_validator() #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	TypeError:...
+
+	>>> bg.integer_validator("3", 0) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	ValueError: 3 must be greater than 0
