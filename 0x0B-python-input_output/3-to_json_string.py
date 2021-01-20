@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import json
+"""
+returns object represented by JSON string
+"""
 
 
 def to_json_string(my_obj):
