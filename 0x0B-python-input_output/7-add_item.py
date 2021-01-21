@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import json
-import sys
 """
 adds all arguments to python list, saves to file
 """
+
+import json
+import sys
 
 
 load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
