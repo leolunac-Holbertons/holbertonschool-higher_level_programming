@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Contains tests for Base class
+"""
+
 from models.base import Base
 import unittest
 """
