@@ -2,82 +2,113 @@
 
 
 class Node:
-    """Node of a singly linked list.
-    Private instance attribute: data:
-        - property def data(self)
-        - property setter def data(self, value)
-    Private instance attribute: next_node:
-        - property def next_node(self)
-        - property setter def next_node(self, value)
-    Instantiation with data and next_node.
+    """Represents a node in a singly linked list
+    Attributes:
+        __data (int): data stored inside the node
+        __next_node (Node): next node in the linked list
     """
-
     def __init__(self, data, next_node=None):
-        """Initializes the data of the node."""
+        """Initializes the node
+        Args:
+            data (int): data stored inside the node
+            next_node (Node): next node in the linked list
+        Returns:
+            None
+        """
         self.data = data
         self.next_node = next_node
 
     @property
     def data(self):
-        """Retrieves the data from the node."""
+        """getter of __data
+        Returns:
+            data stored inside the node
+        """
         return self.__data
 
     @data.setter
     def data(self, value):
-        """Sets the data into a node."""
-        if not isinstance(value, int):
+        """setter of __data
+        Args:
+            value (int): data stored insite the node
+        Returns:
+            None
+        """
+        if type(value) is not int:
             raise TypeError("data must be an integer")
         self.__data = value
 
     @property
     def next_node(self):
-        """Retrieves the next_node."""
+        """getter of __next_node
+        Returns:
+           the next node in the linked list
+        """
         return self.__next_node
 
     @next_node.setter
     def next_node(self, value):
-        """Sets the next_node."""
-        if not isinstance(value, Node) and value is not None:
+        """setter of __next_node
+        Args:
+            value (Node): next node in the linked list
+        Returns:
+            None
+        """
+        if value is not None and type(value) is not Node:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 
+    def __str__(self):
+        """String representation of Node instance
+        Returns:
+            Formatted string representing the node
+        """
+        return str(self.__data)
+
 
 class SinglyLinkedList:
-    """ Singly linked list.
-    Private instance attribute: head.
-    Simple instantiation.
-    Public instance method: def sorted_insert(self, value).
+    """Represents a single linked list
+    Attributes:
+        __head (Node): head of the linked list
     """
-
     def __init__(self):
-        """Initializes the linked list."""
-        self.head = None
-
-    def __str__(self):
-        """For the print statement in the main file."""
-        my_str = ""
-        node = self.head
-        while node:
-            my_str += str(node.data)
-            my_str += '\n'
-            node = node.next_node
-        return my_str[:-1]
+        """Initializes the linked list
+        Returns:
+            None
+        """
+        self.__head = None
 
     def sorted_insert(self, value):
-        """Inserts a node in a sorted linked list."""
-        new_node = Node(value)
-
-        if self.head is None:
-            self.head = new_node
+        """ inserts a new Node instance into the correct sorted position
+        Args:
+            value (int): data stored inside the new node
+        Returns:
+            None
+        """
+        new = Node(value)
+        tmp = self.__head
+        if tmp is None or tmp.data >= value:
+            if tmp:
+                new.next_node = tmp
+            self.__head = new
             return
+        while tmp.next_node is not None:
+            if tmp.next_node.data >= value:
+                break
+            tmp = tmp.next_node
+        new.next_node = tmp.next_node
+        tmp.next_node = new
 
-        if value < self.head.data:
-            new_node.next_node = self.head
-            self.head = new_node
-            return
-
-        node = self.head
-        while node.next_node and node.next_node.data < value:
-            node = node.next_node
-        new_node.next_node = node.next_node
-        node.next_node = new_node
+    def __str__(self):
+        """String representation of SinglyLinkedList instance
+        Returns:
+            Formatted string representing the linked list
+        """
+        string = ""
+        tmp = self.__head
+        while tmp is not None:
+            string += str(tmp)
+            if tmp.next_node is not None:
+                string += "\n"
+            tmp = tmp.next_node
+        return string
