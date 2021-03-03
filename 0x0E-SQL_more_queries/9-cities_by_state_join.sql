@@ -1,5 +1,4 @@
---Write a script that lists all cities contained in hbtn_0d_usa
-
+-- lists all cities in hbtn_0d_usa
 SELECT cities.id AS id, cities.name AS name, states.name AS name
 FROM cities
 INNER JOIN states
